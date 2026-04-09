@@ -4,6 +4,7 @@ import Header from './Components/Header';
 import AddItemButton from './Components/AddItemButton';
 import NoteItem from './Components/NoteItem';
 import InputNotes from './Components/InputNotes';
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const [notes, setNotes] = useState(JSON.parse(localStorage.getItem("List")) || []);
@@ -39,6 +40,11 @@ function App() {
         setNotes={setNotes}
         inputs={inputs}
         setInputs={setInputs}
+      />
+
+      <Toaster 
+        position='top-center'
+        reverseOrder={false}
       />
     </>
   )

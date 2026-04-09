@@ -1,4 +1,5 @@
 import React from "react";
+import toast from "react-hot-toast";
 
 const NoteItem = ({
   notes,
@@ -9,6 +10,7 @@ const NoteItem = ({
   const handleDelete = (id) => {
     const deleteNote = notes.filter((note) => note.id !== id);
     setNotes(deleteNote);
+    toast.success("Note Deleted Successfully.");
   };
 
   const handleUpdate = (note) => {

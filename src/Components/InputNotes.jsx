@@ -1,4 +1,5 @@
 import React from "react";
+import toast from "react-hot-toast";
 
 const InputNotes = ({
   notes,
@@ -20,7 +21,10 @@ const InputNotes = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!inputs.name.trim() || !inputs.description.trim()) return;
+    if (!inputs.name.trim() || !inputs.description.trim()) {
+      toast.error("Your Didn't Enter the value, Enter it First!");
+      return;
+    }
 
     if (inputs.id !== null) {
       const date = new Date();
@@ -35,6 +39,7 @@ const InputNotes = ({
           : note,
       );
       setNotes(updateNote);
+      toast.success("Note Updated Successfully.")
       setInputs({ id: null, name: "", description: "" });
       setToggleBackground(false);
 
@@ -52,6 +57,7 @@ const InputNotes = ({
       setToggleBackground(!toggleBackground);
       setNotes([...notes, addNotes]);
       setInputs({ id: null, name: "", description: "" });
+      toast.success("Note Added Successfully.");
     }
   };
 
